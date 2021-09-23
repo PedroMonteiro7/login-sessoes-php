@@ -2,6 +2,10 @@
 
 session_start();
 
+require("./funcoes.php");
+
+verificarLogin();
+
 ?>
 
 <!DOCTYPE html>

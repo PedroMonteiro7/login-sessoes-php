@@ -33,9 +33,18 @@ function realizarLogin($usuario, $senha, $dados) {
             header("location: area_restrita.php");
             exit;
 
-        } else {
-            header("location: index.php");
-        }
+        } 
     }
-    exit;
+    header("location: index.php");
+}
+
+//Função de verificação de login (verifica se o usuário passou pelo processo de login):
+
+function verificarLogin() {
+
+    if ($_SESSION["id"] != session_id() || (empty($_SESSION["id"]))) {
+
+        header("location: index.php");
+    }
+
 }
