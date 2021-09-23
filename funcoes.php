@@ -28,7 +28,7 @@ function realizarLogin($usuario, $senha, $dados) {
             //variáveis de sessão
             $_SESSION["usuario"] = $dado->usuario;
             $_SESSION["id"] = session_id();
-            $_SESSION["data-hora"] = date("d/m/Y - h:i:s");
+            $_SESSION["data_hora"] = date("d/m/Y - h:i:s");
 
             header("location: area_restrita.php");
             exit;
@@ -38,6 +38,7 @@ function realizarLogin($usuario, $senha, $dados) {
     header("location: index.php");
 }
 
+
 //Função de verificação de login (verifica se o usuário passou pelo processo de login):
 
 function verificarLogin() {
@@ -46,5 +47,18 @@ function verificarLogin() {
 
         header("location: index.php");
     }
+
+}
+
+
+//Função de finalização de login:
+//efetua a ação de sair do usuário destruindo a sessão
+
+function finalizarLogin() {
+
+    session_unset(); //limpa aa variáveis de sessão
+    session_destroy(); //destrói a sessão ativa
+
+    header("location: index.php");
 
 }
